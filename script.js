@@ -115,47 +115,44 @@ function fade(){
     }
     }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const container = document.getElementById('skills');
-  if (!container) return; // exit if the element is not on the page
+let scrolling = false;
+let scrollInterval;
 
-  let scrolling = false;
-  let scrollInterval;
+// Check if any part of the element is visible
+function isElementVisible(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.bottom > 0 && rect.top < window.innerHeight;
+}
 
-  // Check if any part of the element is visible
-  function isElementVisible(el) {
-    const rect = el.getBoundingClientRect();
-    return rect.bottom > 0 && rect.top < window.innerHeight;
-  }
-
-  function startScrolling() {
-    scrollInterval = setInterval(() => {
-      container.scrollTop += 2; // scroll speed
-      if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-        stopScrolling();
-        scrolling = false;
-      }
-    }, 20);
-  }
-
-  function stopScrolling() {
-    clearInterval(scrollInterval);
-  }
-
-  function toggleScroll() {
-    if (!isElementVisible(container)) return;
-    scrolling = !scrolling;
-    if (scrolling) startScrolling();
-    else stopScrolling();
-  }
-
-  // Event listeners
-  window.addEventListener('click', toggleScroll);
-  window.addEventListener('keydown', function(e) {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      toggleScroll();
+function startScrolling(container) {
+  scrollInterval = setInterval(() => {
+    container.scrollTop += 2; // scroll speed
+    if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+      stopScrolling();
+      scrolling = false;
     }
-  });
-});
+  }, 20);
+}
 
+function stopScrolling() {
+  clearInterval(scrollInterval);
+}
+
+function toggleScroll() {
+  const container = document.getElementById('skills'); // check inside the function
+  if (!container) return; // if element doesn't exist, do nothing
+  if (!isElementVisible(container)) return; // only scroll if visible
+
+  scrolling = !scrolling;
+  if (scrolling) startScrolling(container);
+  else stopScrolling();
+}
+
+// Event listeners
+window.addEventListener('click', toggleScroll);
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    toggleScroll();
+  }
+});
