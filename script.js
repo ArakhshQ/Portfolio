@@ -50,6 +50,7 @@ if (hoveredbtn) {
 
 const about = document.getElementById("about");
 const work = document.getElementById("work");
+const skill = document.getElementById("skill");
 const contact = document.getElementById("contact");
 const qbutton = document.getElementById("qbutton");
 about.addEventListener("click", () => {
@@ -62,6 +63,12 @@ about.addEventListener("click", () => {
 work.addEventListener("click", () => {
     setTimeout(() => {
         $('#add').load('work.html')
+      }, 500);
+
+  });
+skill.addEventListener("click", () => {
+    setTimeout(() => {
+        $('#add').load('skills.html')
       }, 500);
 
   });
@@ -95,6 +102,9 @@ function fade(){
     }
     if(document.querySelector(".about")){
         document.querySelector(".about").style.opacity = "0";
+    }
+    if(document.querySelector(".skills")){
+        document.querySelector(".skills").style.opacity = "0";
     }
 
     if(document.querySelector(".work")){
