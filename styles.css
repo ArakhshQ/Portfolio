@@ -205,9 +205,20 @@ text-decoration:none;
 
 animation: fadeInUp 1.5s ease forwards;
 }
+.scrollable {
+  max-height: 500px; /* adjust as needed */
+  overflow-y: scroll; /* enable vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 
 @media(max-width: 900px){
     .row{
         flex-direction:column;
     }
 }
+
