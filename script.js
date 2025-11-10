@@ -173,3 +173,20 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+document.getElementById('skillsBtn').addEventListener('click', function() {
+  const reminder = document.getElementById('skills-reminder');
+  
+  // Set the text
+  reminder.textContent = "Tip: Click anywhere or press Space to auto-scroll the skills section!";
+  
+  // Show reminder
+  reminder.style.opacity = 1;
+  reminder.style.transform = "translateY(0)"; // optional slide-in effect
+
+  // Hide after 5 seconds
+  setTimeout(() => {
+    reminder.style.opacity = 0;
+    reminder.style.transform = "translateY(-10px)"; // optional slide-out
+  }, 5000);
+});
