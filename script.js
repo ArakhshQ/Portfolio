@@ -132,7 +132,7 @@ function startScrolling(container) {
       scrolling = false;
       return;
     }
-    container.scrollTop += 2; // scroll speed
+    container.scrollTop += 2; // auto-scroll speed
   }, 20);
 }
 
@@ -142,8 +142,7 @@ function stopScrolling() {
 
 function toggleScroll() {
   const container = document.getElementById('skills');
-  if (!container) return;
-  if (!isElementVisible(container)) return;
+  if (!container || !isElementVisible(container)) return;
 
   scrolling = !scrolling;
   if (scrolling) startScrolling(container);
@@ -152,22 +151,25 @@ function toggleScroll() {
 
 // Event listeners
 window.addEventListener('click', toggleScroll);
+
 window.addEventListener('keydown', (e) => {
   const container = document.getElementById('skills');
-  if (!container) return;
+  if (!container || !isElementVisible(container)) return;
 
   if (e.code === 'Space') {
     e.preventDefault();
     toggleScroll();
   }
 
-  // allow arrow keys to scroll manually
-  if (e.code === 'ArrowDown') {
+  // Prevent default scrolling behavior for arrow keys
+  if (e.code === 'ArrowDown' || e.code === 'ArrowUp') {
     e.preventDefault();
-    container.scrollTop += 20; // scroll down
-  }
-  if (e.code === 'ArrowUp') {
-    e.preventDefault();
-    container.scrollTop -= 20; // scroll up
+    const scrollAmount = 20; // manual scroll step
+
+    if (e.code === 'ArrowDown') {
+      container.scrollTop = Math.min(container.scrollTop + scrollAmount, container.scrollHeight - container.clientHeight);
+    } else if (e.code === 'ArrowUp') {
+      container.scrollTop = Math.max(container.scrollTop - scrollAmount, 0);
+    }
   }
 });
