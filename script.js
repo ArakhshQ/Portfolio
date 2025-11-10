@@ -126,11 +126,13 @@ function isElementVisible(el) {
 
 function startScrolling(container) {
   scrollInterval = setInterval(() => {
-    container.scrollTop += 2; // scroll speed
+    // stop if we reach the bottom
     if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
       stopScrolling();
       scrolling = false;
+      return;
     }
+    container.scrollTop += 2; // scroll speed
   }, 20);
 }
 
@@ -139,9 +141,9 @@ function stopScrolling() {
 }
 
 function toggleScroll() {
-  const container = document.getElementById('skills'); // check inside the function
-  if (!container) return; // if element doesn't exist, do nothing
-  if (!isElementVisible(container)) return; // only scroll if visible
+  const container = document.getElementById('skills');
+  if (!container) return;
+  if (!isElementVisible(container)) return;
 
   scrolling = !scrolling;
   if (scrolling) startScrolling(container);
@@ -151,8 +153,21 @@ function toggleScroll() {
 // Event listeners
 window.addEventListener('click', toggleScroll);
 window.addEventListener('keydown', (e) => {
+  const container = document.getElementById('skills');
+  if (!container) return;
+
   if (e.code === 'Space') {
     e.preventDefault();
     toggleScroll();
+  }
+
+  // allow arrow keys to scroll manually
+  if (e.code === 'ArrowDown') {
+    e.preventDefault();
+    container.scrollTop += 20; // scroll down
+  }
+  if (e.code === 'ArrowUp') {
+    e.preventDefault();
+    container.scrollTop -= 20; // scroll up
   }
 });
