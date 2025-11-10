@@ -172,6 +172,9 @@ transition: .4s;
  animation: fadeInUp 1.5s ease forwards;
 
 }
+.skills{
+animation: fadeInUp 1.5s ease forwards;
+}
 
 
 
@@ -236,6 +239,7 @@ animation: fadeInUp 1.5s ease forwards;
         flex-direction:column;
     }
 }
+
 
 
 
