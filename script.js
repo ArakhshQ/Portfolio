@@ -115,3 +115,50 @@ function fade(){
     }
     }
 
+let scrolling = false;
+let scrollInterval;
+const container = document.querySelector('#skills');
+
+// Check if element is visible in viewport
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+  );
+}
+
+// Start scrolling
+function startScrolling() {
+  scrollInterval = setInterval(() => {
+    container.scrollTop += 2; // scroll speed (pixels per interval)
+    // Stop if we reach the bottom
+    if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+      stopScrolling();
+      scrolling = false;
+    }
+  }, 20); // interval in milliseconds
+}
+
+// Stop scrolling
+function stopScrolling() {
+  clearInterval(scrollInterval);
+}
+
+// Toggle scroll only if Skills section is visible
+function toggleScroll() {
+  if (!isElementInViewport(container)) return; // do nothing if not visible
+  scrolling = !scrolling;
+  if (scrolling) startScrolling();
+  else stopScrolling();
+}
+
+// Event listeners
+window.addEventListener('click', toggleScroll);
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    toggleScroll();
+  }
+});
+
