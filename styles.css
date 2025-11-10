@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+    margin:0;
+    overflow:hidden;
+    cursor:none;
+    font-family: "Red Hat Display", sans-serif;
+}
+.cursor{
+    width:3px;
+    height:3px;
+    pointer-events: none;
+    background:white;
+
+}
+.outline{
+    width:30px;
+    height:30px;
+    border:1px solid white;
+    pointer-events: none;
+}
+.cursor, .outline{
+    position:fixed;
+    top:0;
+    left:0;
+    border-radius:50%;
+    transform:translate(-50%, -50%);
+    z-index:1;
+    transition: transform 0.3s ease;
+}
+
+.cursor.hovered {
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.outline.hovered {
+    transform: translate(-50%, -50%) scale(2);
+}
+.hovered-2{
+    border:1px solid lightgrey;
+}
+
+.head{
+    position:absolute;
+    top:40px;
+}
+.menu{
+    padding:5px;
+    transition: transform 1s ease;
+}
+.menud{
+    transform: rotate(90deg);
+}
+
+header{
+    display:flex;
+    justify-content:center;
+    padding:50px;
+    background:black;
+    display:none;
+    }
+    nav ul{
+     display:flex;
+     list-style:none;
+     margin:0;
+     padding:0;
+    }
+    nav ul li {
+        padding: 0 10px;
+    }
+    #nav a{
+        color:white;
+        font-size:18px;
+    }
+    .mainsec{
+        text-align:center;
+
+        padding:180px 50px;
+        display:flex;
+        flex-direction:column;
+        transition:.4s;
+    }
+    .mainsec h1{
+        font-size:50px;
+        color:white;
+        align-self:center;
+        width:max-content;
+
+    }
+main{
+    background:rgb(10 12 47);
+    padding: 0 40px;
+    height:100vh
+}
+    .mainsec p{
+        color:white;
+            font-size:25px;
+        align-self:center;
+        margin:0;
+
+    }
+
+
+    .box{
+        position:absolute;
+        bottom:100px;
+        left:0;
+        right:0;
+
+    }
+    .box span{
+        margin:0 15px;
+        width:77px;
+        height:77px;
+        background:white;
+        color:black;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        border-radius:50%;
+        transition: transform 0.4s ease;
+        border:none;
+    }
+    .hovered-btn{
+        box-shadow:0px 0px 20px white;
+        transform: scale(1.3);
+    }
+
+    .power{
+        background:white;
+        color:rgb(10 12 47);
+        border:none;
+        border-radius:50%;
+        font-size:30px;
+       width:50px;
+       height:50px;
+    }
+#add h1, .text{
+transition: .4s;
+}
+.about{
+    opacity:0;
+     max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5em;
+ animation: fadeInUp 1.5s ease forwards;
+
+}
+
+
+
+
+
+.boxes{
+    padding:35px 50px;
+
+}
+
+.anchor{
+    opacity:0;
+    font-size:25px;
+    color:white;
+text-decoration:none;
+    cursor:none;
+    display: inline-block;
+ animation: fadeInUp 1.5s ease forwards;
+}
+.anchor:hover{
+
+  color:white;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.work{
+    transition: .4s;
+}
+
+.contact{
+    display:flex;
+    justify-content: center;
+    padding-top:50px
+}
+.contact a{
+    margin: 0 40px;
+    opacity 0;
+    cursor:none;
+
+ animation: fadeInUp 1.5s ease forwards;
+}
+.contact i{
+    font-size:50px;
+}
+.text, .title{
+    opacity:0;
+
+animation: fadeInUp 1.5s ease forwards;
+}
+
+@media(max-width: 900px){
+    .row{
+        flex-direction:column;
+    }
+}
