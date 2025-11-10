@@ -165,12 +165,16 @@ main{
 transition: .4s;
 }
 .about{
-    opacity:0;
+    
      max-height: 300px;
   overflow-y: auto;
   padding: 0.5em;
- animation: fadeInUp 1.5s ease forwards;
 
+
+}
+.about p{
+    opacity:0;
+     animation: fadeInUp 1.5s ease forwards;
 }
 .skills p, skills a{
     opacity:0;
@@ -240,6 +244,7 @@ animation: fadeInUp 1.5s ease forwards;
         flex-direction:column;
     }
 }
+
 
 
 
