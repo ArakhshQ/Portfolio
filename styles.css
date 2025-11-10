@@ -73,14 +73,14 @@ header{
         font-size:18px;
     }
 .scrollable {
-  max-height: 500px; /* adjust as needed */
-  overflow-y: scroll; /* enable vertical scrolling */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  max-height: 350px; 
+  overflow-y: scroll; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .scrollable::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none; 
 }
 
     .mainsec{
@@ -222,5 +222,6 @@ animation: fadeInUp 1.5s ease forwards;
         flex-direction:column;
     }
 }
+
 
 
