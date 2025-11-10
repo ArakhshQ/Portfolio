@@ -174,7 +174,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-document.getElementById('skillsBtn').addEventListener('click', function() {
+document.getElementById('skill').addEventListener('click', function() {
   const reminder = document.getElementById('skills-reminder');
   
   // Set the text
@@ -190,3 +190,4 @@ document.getElementById('skillsBtn').addEventListener('click', function() {
     reminder.style.transform = "translateY(-10px)"; // optional slide-out
   }, 5000);
 });
+
