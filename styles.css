@@ -178,7 +178,7 @@ transition: .4s;
     opacity:0;
      animation: fadeInUp 1.5s ease forwards;
 }
-.skills p, skills a, skills h2{
+.skills p, .skills a, .skills h2{
     opacity:0;
 animation: fadeInUp 1.5s ease forwards;
 }
@@ -246,6 +246,7 @@ animation: fadeInUp 1.5s ease forwards;
         flex-direction:column;
     }
 }
+
 
 
 
