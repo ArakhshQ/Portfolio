@@ -25,5 +25,6 @@ This portfolio includes:
 The website is live here:  
 https://arakhshq.github.io/Portfolio/
 
-LinkedIn: [Your LinkedIn Profile](#)  
-GitHub: https://github.com/your-username
+## Reach out
+LinkedIn: https://www.linkedin.com/in/arakhsh-qanit-97b83736b/
+GitHub: https://github.com/ArakhshQ/
