@@ -116,11 +116,11 @@ function fade(){
     }
 
 document.addEventListener("DOMContentLoaded", function() {
+  const container = document.getElementById('skills');
+  if (!container) return; // exit if the element is not on the page
+
   let scrolling = false;
   let scrollInterval;
-
-  const container = document.getElementById('skills');
-  if (!container) return; // exit if element not found
 
   // Check if any part of the element is visible
   function isElementVisible(el) {
@@ -128,10 +128,9 @@ document.addEventListener("DOMContentLoaded", function() {
     return rect.bottom > 0 && rect.top < window.innerHeight;
   }
 
-  // Start scrolling
   function startScrolling() {
     scrollInterval = setInterval(() => {
-      container.scrollTop += 2;
+      container.scrollTop += 2; // scroll speed
       if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
         stopScrolling();
         scrolling = false;
@@ -139,12 +138,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 20);
   }
 
-  // Stop scrolling
   function stopScrolling() {
     clearInterval(scrollInterval);
   }
 
-  // Toggle scroll if visible
   function toggleScroll() {
     if (!isElementVisible(container)) return;
     scrolling = !scrolling;
@@ -154,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Event listeners
   window.addEventListener('click', toggleScroll);
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', function(e) {
     if (e.code === 'Space') {
       e.preventDefault();
       toggleScroll();
