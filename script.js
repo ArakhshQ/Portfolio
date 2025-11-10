@@ -115,50 +115,50 @@ function fade(){
     }
     }
 
-let scrolling = false;
-let scrollInterval;
-const container = document.querySelector('#skills');
+document.addEventListener("DOMContentLoaded", function() {
+  let scrolling = false;
+  let scrollInterval;
 
-// Check if element is visible in viewport
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-  );
-}
+  const container = document.getElementById('skills');
+  if (!container) return; // exit if element not found
 
-// Start scrolling
-function startScrolling() {
-  scrollInterval = setInterval(() => {
-    container.scrollTop += 2; // scroll speed (pixels per interval)
-    // Stop if we reach the bottom
-    if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-      stopScrolling();
-      scrolling = false;
-    }
-  }, 20); // interval in milliseconds
-}
-
-// Stop scrolling
-function stopScrolling() {
-  clearInterval(scrollInterval);
-}
-
-// Toggle scroll only if Skills section is visible
-function toggleScroll() {
-  if (!isElementInViewport(container)) return; // do nothing if not visible
-  scrolling = !scrolling;
-  if (scrolling) startScrolling();
-  else stopScrolling();
-}
-
-// Event listeners
-window.addEventListener('click', toggleScroll);
-window.addEventListener('keydown', (e) => {
-  if (e.code === 'Space') {
-    e.preventDefault();
-    toggleScroll();
+  // Check if any part of the element is visible
+  function isElementVisible(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
   }
+
+  // Start scrolling
+  function startScrolling() {
+    scrollInterval = setInterval(() => {
+      container.scrollTop += 2;
+      if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+        stopScrolling();
+        scrolling = false;
+      }
+    }, 20);
+  }
+
+  // Stop scrolling
+  function stopScrolling() {
+    clearInterval(scrollInterval);
+  }
+
+  // Toggle scroll if visible
+  function toggleScroll() {
+    if (!isElementVisible(container)) return;
+    scrolling = !scrolling;
+    if (scrolling) startScrolling();
+    else stopScrolling();
+  }
+
+  // Event listeners
+  window.addEventListener('click', toggleScroll);
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      toggleScroll();
+    }
+  });
 });
 
